@@ -1,6 +1,6 @@
 <?php
 
-namespace Basalt\TwigTools;
+namespace BasaltInc\TwigTools;
 
 class Log {
 
