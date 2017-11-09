@@ -1,0 +1,16 @@
+{
+  "name": "basalt/twig-tools",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Evan Lovely",
+      "email": "evanlovely@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Basalt\\TwigTools\\": "src/"
+    }
+  }
+}
