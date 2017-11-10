@@ -12,5 +12,9 @@
     "psr-4": {
       "BasaltInc\\TwigTools\\": "src/"
     }
+  },
+  "require": {
+    "symfony/yaml": "^3.3",
+    "webmozart/path-util": "^2.3"
   }
 }
