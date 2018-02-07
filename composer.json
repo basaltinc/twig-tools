@@ -14,7 +14,9 @@
     }
   },
   "require": {
-    "symfony/yaml": "^3.2",
-    "webmozart/path-util": "^2.3"
+    "twig/twig": "^1.0",
+    "symfony/yaml": "^4.0",
+    "webmozart/path-util": "^2.3",
+    "justinrainbow/json-schema": "^5.2"
   }
 }
