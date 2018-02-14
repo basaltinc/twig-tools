@@ -17,6 +17,7 @@
     "twig/twig": "^1.0",
     "symfony/yaml": "^3.3",
     "webmozart/path-util": "^2.3",
-    "justinrainbow/json-schema": "^5.2"
+    "justinrainbow/json-schema": "^5.2",
+    "fzaninotto/faker": "^1.7"
   }
 }
