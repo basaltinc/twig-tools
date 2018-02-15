@@ -9,6 +9,11 @@ use RecursiveDirectoryIterator;
 class Namespaces {
 
   /**
+   * Build Twig Namespace config for loaders
+   * Takes same config format as Pattern Lab's Twig Namespaces plugin - https://github.com/EvanLovely/plugin-twig-namespaces
+   * Returns format expected by Drupal's Component Libraries config - https://www.drupal.org/project/components
+   * Perfect for passing to `self::addPathsToLoader()` below
+   * @see addPathsToLoader
    * @param array $config
    * @param string $pathRoot - Prefix all paths with this path.
    * @return array
@@ -36,5 +41,30 @@ class Namespaces {
       }
     }
     return $namespaces;
+  }
+
+  /**
+   * Add Twig Namespaces config to new Twig_Loader_Filesystem
+   * Takes same format as Drupal's Component Libraries config - https://www.drupal.org/project/components
+   * @param array $config
+   * @example
+   *   $config = [
+   *      'namespace' => [
+   *          'paths' => [
+   *             'path/to/templates1',
+   *             'path/to/templates2',
+   *           ],
+   *       ]
+   *   ];
+   * @return \Twig_Loader_Filesystem
+   */
+  public static function addPathsToLoader($config) {
+    $loader = new \Twig_Loader_Filesystem();
+    foreach ($config as $key => $value) {
+      foreach ($value['paths'] as $path) {
+        $loader->addPath($path, $key);
+      }
+    }
+    return $loader;
   }
 }
