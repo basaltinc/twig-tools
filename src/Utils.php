@@ -94,7 +94,7 @@ class Utils {
 <script type="application/json">' . json_encode($data) . '</script>
 <script>
 	(function () {
-	  if (document.hasOwnProperty("currentScript")) {
+	  if (document.currentScript) {
       var me = document.currentScript;
       var jsonScriptTag = me.previousElementSibling.innerHTML;
       var data = JSON.parse(jsonScriptTag);';
