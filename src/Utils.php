@@ -94,18 +94,20 @@ class Utils {
 <script type="application/json">' . json_encode($data) . '</script>
 <script>
 	(function () {
-		var me = document.currentScript;
-		var jsonScriptTag = me.previousElementSibling.innerHTML;
-		var data = JSON.parse(jsonScriptTag);';
+	  if (document.hasOwnProperty("currentScript")) {
+      var me = document.currentScript;
+      var jsonScriptTag = me.previousElementSibling.innerHTML;
+      var data = JSON.parse(jsonScriptTag);';
 
-    if ($refPrevElement) {
-      $output = $output . 'var prevElement = me.previousElementSibling.previousElementSibling;';
-      $logArgs[] = 'prevElement';
-    }
+      if ($refPrevElement) {
+        $output = $output . 'var prevElement = me.previousElementSibling.previousElementSibling;';
+        $logArgs[] = 'prevElement';
+      }
 
-    $consoleStatement = 'console.' . $type . '(' . join(', ', $logArgs) . ');';
+      $consoleStatement = 'console.' . $type . '(' . join(', ', $logArgs) . ');';
 
-    $output = $output . $consoleStatement . '
+      $output = $output . $consoleStatement . '
+	  }
 	})();
 </script>
 	';
