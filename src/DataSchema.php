@@ -32,6 +32,10 @@ class DataSchema {
    */
   public static function validateDataSchema(\Twig_Environment $env, $data, $schema_path, $twig_self) {
     $output = '';
+    // Validate Data Schema requires Twig Debug turned on
+    if (!$env->isDebug()) {
+      return $output;
+    }
 
     $schema = Utils::getDataViaTwig($env, $schema_path);
 
