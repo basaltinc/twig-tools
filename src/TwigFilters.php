@@ -8,13 +8,12 @@ class TwigFilters {
 
   public static function remove_null($name = 'remove_null') {
     return new Twig_SimpleFilter($name, function ($array) {
-      $result = [];
-      foreach ($array as $value) {
-        if ($value !== null) {
-          $result[] = $value;
-        }
+      if (!is_array($array)) {
+        return $array;
       }
-      return $result;
+      return array_filter($array, function($item) {
+        return $item !== null;
+      });
     });
   }
 
