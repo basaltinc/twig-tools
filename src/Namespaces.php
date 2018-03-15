@@ -32,7 +32,7 @@ class Namespaces {
             }
           }
         } else {
-          $newPaths[] = $path;
+          $newPaths[] = $fullPath;
         }
       }
       $newPaths = array_unique($newPaths);

@@ -25,19 +25,21 @@ class DataSchema {
   /**
    * @param \Twig_Environment $env
    * @param $data - The data to validate, usually the `_context` / Twig `$context` var
-   * @param {string} $schema_path - Twig Namespace path to schema file.
+   * @param {string|array} $schema - Twig Namespace path to schema file OR associated array that is a schema
    * @param {string} $twig_self - `_self` in Twig templates which turns into `@namespace/file.twig`
    * @return {sring} $output - Place on the page below component, used for adding `<script>` tags that
    * @throws \Exception
    */
-  public static function validateDataSchema(\Twig_Environment $env, $data, $schema_path, $twig_self) {
+  public static function validateDataSchema(\Twig_Environment $env, $data, $schema, $twig_self) {
     $output = '';
     // Validate Data Schema requires Twig Debug turned on
     if (!$env->isDebug()) {
       return $output;
     }
-
-    $schema = Utils::getDataViaTwig($env, $schema_path);
+    // If schema is a path, get it; otherwise, it's already data.
+    if (is_string($schema)) {
+      $schema = Utils::getDataViaTwig($env, $schema);
+    }
 
     $validator = self::validate($data, $schema);
 
