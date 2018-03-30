@@ -57,9 +57,6 @@ class DataSchema {
         'message' => $message_to_log,
         'details' => [
           'template_path' => Utils::resolveTwigPath($env, $twig_self),
-          'data_passed_to_template' => $data,
-          'schema' => $schema,
-          'errors' => $validator->getErrors(),
         ],
       ];
 
