@@ -36,6 +36,21 @@ class DataSchema {
     if (!$env->isDebug()) {
       return $output;
     }
+    
+    // Validate Data Schema requires a schema.
+    if (empty($schema)) {
+      $to_log = [
+        'message' => '"' . $twig_self . '" had no schema.',
+        'details' => [
+          'template_path' => Utils::resolveTwigPath($env, $twig_self),
+        ],
+      ];
+
+      $output = Utils::consoleLog($to_log, 'error', ['message', 'details'], true);
+
+      return $output;
+    }
+
     // If schema is a path, get it; otherwise, it's already data.
     if (is_string($schema)) {
       $schema = Utils::getDataViaTwig($env, $schema);
