@@ -24,6 +24,11 @@ class Namespaces {
       $newPaths = [];
       foreach ($settings['paths'] as $path) {
         $fullPath = Path::join($pathRoot, $path);
+
+        if (!file_exists($fullPath)) {
+          continue;
+        }
+
         if (isset($settings['recursive']) && $settings['recursive']) {
           $items = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($fullPath), RecursiveIteratorIterator::SELF_FIRST);
           foreach ($items as $key => $item) {
