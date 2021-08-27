@@ -15,7 +15,7 @@
   },
   "require": {
     "twig/twig": "^1.0 || ^2.0",
-    "symfony/yaml": "^3.2",
+    "symfony/yaml": "^3.2 || ^4.0",
     "webmozart/path-util": "^2.3",
     "justinrainbow/json-schema": "^5.2",
     "fzaninotto/faker": "^1.7"
